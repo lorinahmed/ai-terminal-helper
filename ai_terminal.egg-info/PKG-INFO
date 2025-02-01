@@ -51,64 +51,46 @@ For OpenAI (Remote) option:
 git clone <repository-url>
 cd ai-command-helper
 ```
-2. Install required packages:
+
+2. Run the installation script:
 ```
-pip install requests pyyaml psutil
+./install.sh
 ```
 
-3. Create config.yaml file in the project directory:
+This will:
+- Create a Python virtual environment at `~/.ai-terminal`
+- Install required packages
+- Create a default config file at `~/.config/ai-terminal/config.yaml`
+- Make the `ait` command available system-wide
 
-For Ollama (Local):
-```
-llm:
-  provider: "ollama"
-  model: "deepseek-r1:8b"
-  url: "http://localhost:11434/api/generate"
-  api_key: ""
-```
-
-For OpenAI (Remote):
-```
-llm:
-  provider: "openai"
-  model: "gpt-3.5-turbo"
-  url: "https://api.openai.com/v1/chat/completions"
-  api_key: "your-api-key-here"
-```
-
-4. If using Ollama locally:
+3. If using Ollama locally:
 ```
 curl https://ollama.ai/install.sh | sh
-```
-
-5. Start Ollama
-```
 ollama serve
 ```
 
-6. Pull the model you want to use (in another terminal)
+4. Pull the model you want to use (in another terminal)
 ```
 ollama pull deepseek-r1:8b
 ```
 
 ## Usage
 
-1. Run the program:
+1. Run the command:
 ```
-./clh.py
-```
-
-2. Enter your request in plain English when prompted. For example:
-```
-💭 What would you like to do? (or 'exit' to quit): find large files in my home directory
+ait "your request here"
 ```
 
-3. Review the suggested command and its explanation
+For example:
+```
+ait "show me system memory usage"
+```
 
-4. Confirm whether you want to execute the command (y/n)
+2. Review the suggested command and its explanation
 
-5. Type 'exit' to quit the program
+3. Confirm whether you want to execute the command (y/n)
 
+4. Type 'exit' to quit the program
 
 ## Examples
 

@@ -93,7 +93,6 @@ Be concise and direct.
             }}
         )
 
-    #print("Response: ", response.json()['response'])
         try:
             command_data = json.loads(response.json()['response'])
             return command_data.get('command', '')
@@ -126,7 +125,6 @@ Be concise and direct.
                 }
 
         )
-        print("Response: ", response.json())
         content = response.json()['choices'][0]['message']['content']
         command_data = json.loads(content)
         return command_data['command']
@@ -184,7 +182,7 @@ Be concise and direct.
         # Get command suggestion
         print("\n🤔 Let me suggest a command...")
         suggestion = get_command(user_request, config)
-        print(f"\n{suggestion}")
+        print("Suggested command: ", suggestion)
         
         # Ask for confirmation
         confirm = input("\n❓ Would you like me to run this command? (y/n): ").lower().strip()
