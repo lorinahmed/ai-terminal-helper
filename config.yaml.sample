@@ -1,0 +1,10 @@
+provider: openai
+ollama:
+  url: http://localhost:11434/api/generate
+  model: deepseek-r1:8b
+  api_key: ""  # only needed for OpenAI 
+
+openai:
+  url: https://api.openai.com/v1/chat/completions
+  model: gpt-4o-mini
+  api_key: "" 

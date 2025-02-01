@@ -1,0 +1,154 @@
+Metadata-Version: 2.2
+Name: ai-terminal
+Version: 0.1.0
+Summary: AI-powered command-line helper
+Home-page: https://github.com/yourusername/ai-terminal
+Author: Your Name
+Author-email: your.email@example.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Description-Content-Type: text/markdown
+Requires-Dist: requests>=2.31.0
+Requires-Dist: psutil>=5.9.0
+Requires-Dist: PyYAML>=6.0.1
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: summary
+
+# AI Command Line Helper
+
+A simple command-line tool that uses AI to suggest and execute shell commands based on natural language requests. You can choose to use either a local Ollama server or OpenAI's API.
+
+## Description
+
+This tool allows you to:
+- Ask for commands in plain English
+- Get AI-suggested commands based on your system
+- Review the command before execution
+- Execute commands safely with confirmation
+- Choose between local Ollama or OpenAI's API
+
+## Prerequisites
+
+For Ollama (Local) option:
+- Python 3.6 or higher
+- Ollama installed and running locally
+
+For OpenAI (Remote) option:
+- Python 3.6 or higher
+- OpenAI API key
+
+## Installation
+
+1. Clone the repository:
+```
+git clone <repository-url>
+cd ai-command-helper
+```
+2. Install required packages:
+```
+pip install requests pyyaml psutil
+```
+
+3. Create config.yaml file in the project directory:
+
+For Ollama (Local):
+```
+llm:
+  provider: "ollama"
+  model: "deepseek-r1:8b"
+  url: "http://localhost:11434/api/generate"
+  api_key: ""
+```
+
+For OpenAI (Remote):
+```
+llm:
+  provider: "openai"
+  model: "gpt-3.5-turbo"
+  url: "https://api.openai.com/v1/chat/completions"
+  api_key: "your-api-key-here"
+```
+
+4. If using Ollama locally:
+```
+curl https://ollama.ai/install.sh | sh
+```
+
+5. Start Ollama
+```
+ollama serve
+```
+
+6. Pull the model you want to use (in another terminal)
+```
+ollama pull deepseek-r1:8b
+```
+
+## Usage
+
+1. Run the program:
+```
+./clh.py
+```
+
+2. Enter your request in plain English when prompted. For example:
+```
+💭 What would you like to do? (or 'exit' to quit): find large files in my home directory
+```
+
+3. Review the suggested command and its explanation
+
+4. Confirm whether you want to execute the command (y/n)
+
+5. Type 'exit' to quit the program
+
+
+## Examples
+
+Here are some example requests you can try:
+- "show me system memory usage"
+- "find all python files in current directory"
+- "list files larger than 100MB"
+- "check disk space usage"
+
+## Configuration
+
+You can modify config.yaml to:
+- Choose the LLM provider (ollama or openai)
+- Use a different model
+- Change the API endpoint
+- Add your OpenAI API key (if using OpenAI)
+
+## Troubleshooting
+
+For Ollama:
+1. If Ollama isn't running:
+```
+ollama serve
+```
+
+2. If the model isn't installed:
+```
+ollama pull deepseek-r1:8b
+```
+
+3. If you get connection errors, check if Ollama is running and accessible at http://localhost:11434
+
+For OpenAI:
+1. Make sure your API key is correct in config.yaml
+2. Check your internet connection
+3. Verify your OpenAI account has available credits
+
+## Safety Note
+
+Always review commands before executing them, especially when they:
+- Modify files or directories
+- Require elevated privileges (sudo)
+- Affect system settings

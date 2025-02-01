@@ -1,0 +1,2 @@
+[console_scripts]
+ait = aiterminal.clh:main
